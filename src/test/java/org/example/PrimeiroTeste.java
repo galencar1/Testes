@@ -17,6 +17,6 @@ public class PrimeiroTeste {
         int result = number1 + number2;
         //verification
 //      Assert.assertEquals(15,result);
-        Assertions.assertThat(result).isEqualTo(15);
+        Assertions.assertThat(result).isBetween(14,16);
     }
 }
