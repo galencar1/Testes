@@ -1,13 +1,15 @@
+
 package org.example;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 public class FirstTest {
     Calculator calculator;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         calculator = new Calculator();
     }
@@ -22,12 +24,12 @@ public class FirstTest {
         Assertions.assertThat(result).isEqualTo(15);
     }
 
-    @Test(expected = RuntimeException.class)//Prepara a classe teste para receber uma exceção.
+    @Test//(expected = RuntimeException.class)//Prepara a classe teste para receber uma exceção.
     public void mustNotAddNegativeNumbers(){
         //scenario
         int num1 = -10, num2 = 5;
         //executor
-        calculator.addUp(num1, num2);
+        org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class, ()-> calculator.addUp(num1, num2));
         //verification
 
     }
@@ -53,12 +55,13 @@ public class FirstTest {
         Assertions.assertThat(result).isEqualTo(2);
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test//(expected = ArithmeticException.class)
     public void notAllowedDivideNumbersByZero(){
         //scenario
         int num1 = 10, num2 = 0;
         //executor
-        calculator.divide(num1, num2);
+        org.junit.jupiter.api.Assertions
+                .assertThrows(ArithmeticException.class, ()-> calculator.divide(num1 , num2));
     }
     @Test
     public void mustMultiplyTwoNumbers(){

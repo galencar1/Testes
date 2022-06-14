@@ -1,8 +1,9 @@
 package org.example;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class RegistrationPeopleTest {
 /*************************************************************************************/
@@ -10,13 +11,14 @@ public class RegistrationPeopleTest {
 /*************************************************************************************/
     Pessoa pessoa;
 /*************************************************************************************/
-    @Before
+    @BeforeEach
     public void setUp(){
         registrationPeople = new RegistrationPeople();
         pessoa = new Pessoa();
     }
 
     @Test
+    @DisplayName("Must Create Registration People")
     public void mustCreateRegistrationPeople(){
         //scenario
         //executor
@@ -26,6 +28,7 @@ public class RegistrationPeopleTest {
     }
 
     @Test
+    @DisplayName("Must Add People")
     public void mustAddPeople(){
         //scenario
         pessoa.setNome("Zaraki");
@@ -39,14 +42,17 @@ public class RegistrationPeopleTest {
                 .contains(pessoa); // contém a classe pessoa.
     }
 
-    @Test(expected = PessoaSemNomeException.class)
+    @Test//(expected = PessoaSemNomeException.class)
+    @DisplayName("Must Not Add People With Empty Name")
     public void mustNotAddPeopleWithEmptyName(){
         //scenario
         //executor
-        registrationPeople.adicionar(pessoa);
+        org.junit.jupiter.api.Assertions
+                        .assertThrows(PessoaSemNomeException.class, () -> registrationPeople.adicionar(pessoa));
     }
 
     @Test
+    @DisplayName("Must Remove People")
     public void mustRemovePeople(){
         //scenario
         pessoa.setNome("Zaraki");
@@ -57,11 +63,13 @@ public class RegistrationPeopleTest {
         Assertions.assertThat(registrationPeople.getPessoas()).isEmpty(); // Após remover o cadastro, deve estar vazio.
     }
 
-    @Test(expected = CadastroVazioException.class)
+    @Test//(expected = CadastroVazioException.class)
+    @DisplayName("Should throw error when trying remove Non existent person")
     public void shouldThrowErrorWhenTryingToRemoveNonExistentPerson(){
         //scenario
         //executor
-        registrationPeople.remover(pessoa);
+        org.junit.jupiter.api.Assertions
+                .assertThrows(CadastroVazioException.class, () -> registrationPeople.remover(pessoa) );
         //verification
 
     }
