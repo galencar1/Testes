@@ -1,14 +1,18 @@
 package org.example;
 
 import org.assertj.core.api.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 
 public class FirstTest {
+    Calculator calculator;
 
+    @Before
+    public void setUp(){
+        calculator = new Calculator();
+    }
     @Test
     public void mustAddTwoNumbers(){
-        Calculator calculator = new Calculator();
-
         //scenario
         int number1 = 10, number2 = 5;
         //executor
@@ -21,7 +25,6 @@ public class FirstTest {
     @Test(expected = RuntimeException.class)//Prepara a classe teste para receber uma exceção.
     public void mustNotAddNegativeNumbers(){
         //scenario
-        Calculator calculator = new Calculator();
         int num1 = -10, num2 = 5;
         //executor
         calculator.addUp(num1, num2);
@@ -32,34 +35,32 @@ public class FirstTest {
     @Test
     public void mustSubtractTwoNumbers(){
         //scenario
-        Calculator calculator = new Calculator();
         int num1 = 10, num2 = 5;
         //executor
-        calculator.subtract(num1, num2);
+        int result = calculator.subtract(num1, num2);
         //verification
-
+        Assertions.assertThat(result).isEqualTo(5);
     }
 
     @Test
     public void mustDivideTwoNumbers(){
         //scenario
-        Calculator calculator = new Calculator();
         int num1 = 10 , num2 = 5;
         //executor
-        calculator.divide(num1, num2);
+        int result = calculator.divide(num1, num2);
 
         //verification
+        Assertions.assertThat(result).isEqualTo(2);
     }
 
     @Test
     public void mustMultiplyTwoNumbers(){
         //scenario
-        Calculator calculator = new Calculator();
         int num1 = 10, num2 = 5;
         //executor
-        calculator.multiply(num1, num2);
+        int result = calculator.multiply(num1, num2);
         //verification
-
+        Assertions.assertThat(result).isEqualTo(50);
     }
 }
 
