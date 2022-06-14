@@ -13,7 +13,6 @@ public class RegistrationPeopleTest {
     @Before
     public void setUp(){
         registrationPeople = new RegistrationPeople();
-    /****************************************************/
         pessoa = new Pessoa();
     }
 
