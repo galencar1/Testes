@@ -1,17 +1,22 @@
 package org.example;
 
-import org.junit.Assert;
+import org.assertj.core.api.Assertions;
+// import org.junit.Assert;
+// import org.assertj.core.api.Assertions.*;
+// import org.junit.Assert;
 import org.junit.Test;
 
 public class PrimeiroTeste {
 
+
     @Test
     public void estruturaDeUmTeste(){
-        //cenario
-        int numero1 = 10, numero2 = 5;
-        //execução
-        int resultado = numero1 + numero2;
-        //verificação
-        Assert.assertEquals(15,resultado);
+        //scenario
+        int number1 = 10, number2 = 5;
+        //executor
+        int result = number1 + number2;
+        //verification
+//      Assert.assertEquals(15,result);
+        Assertions.assertThat(result).isEqualTo(15);
     }
 }
