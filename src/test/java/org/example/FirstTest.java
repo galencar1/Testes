@@ -11,6 +11,7 @@ public class FirstTest {
 
     @BeforeEach
     public void setUp(){
+
         calculator = new Calculator();
     }
     @Test
